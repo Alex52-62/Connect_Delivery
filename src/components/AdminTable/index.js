@@ -11,6 +11,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import {CouriersList} from "../CouriersList/CouriersList";
 import {ChiefAnalytics} from "../ChiefAnalytics/ChiefAnalytics";
 import {couriersOnline, couriersOffline, couriersWork} from "../../utils/constants";
+import {CourierStatusChange} from "../CourierStatusChange/CourierStatusChange";
 
 
 
