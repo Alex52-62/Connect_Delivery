@@ -24,7 +24,9 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const useStyles = makeStyles({
 	btn: {
 		backgroundColor: '#4EAC04',
+		[`&:hover`]: { backgroundColor: '#428e04' },
 	},
+
 	wrapper_flex: {
 		display: 'flex',
 		justifyContent: 'space-between',
