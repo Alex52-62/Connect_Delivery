@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, signUp } from '../../services/firebase'
 import { ref, set, onValue } from 'firebase/database'
+<<<<<<< Updated upstream
 import Checkbox from '@material-ui/core/Checkbox'
+=======
+import Checkbox from '@mui/material/Checkbox'
+>>>>>>> Stashed changes
 
 import { toggleLogReg } from '../../store/home/actions'
 import { db } from '../../services/firebase'
