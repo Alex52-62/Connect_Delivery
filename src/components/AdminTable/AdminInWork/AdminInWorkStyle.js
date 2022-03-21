@@ -15,7 +15,6 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	'&:nth-of-type(odd)': {
 		backgroundColor: theme.palette.action.hover,
 	},
-	// hide last border
 	'&:last-child td, &:last-child th': {
 		border: 0,
 	},
@@ -24,6 +23,7 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const useStyles = makeStyles({
 	btn: {
 		backgroundColor: '#4EAC04',
+		'&:hover': { backgroundColor: '#167f06' },
 	},
 	wrapper_flex: {
 		display: 'flex',
