@@ -1,84 +1,44 @@
-import {useEffect, useState} from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import { styled } from '@mui/material/styles';
-import Badge from '@mui/material/Badge';
+import Stack from '@mui/material/Stack';
+import { ref, set, onValue } from "firebase/database";
+import { db } from "../../services/firebase";
+import { auth } from "../../services/firebase";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    backgroundColor: '#44b700',
-    color: '#44b700',
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.8)',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}));
-
+console.log(auth);
 export const Profile = ({ onLogout }) => {
-  const [photo, setPhoto] = useState("");
+  /*const [role, setRole] = useState("");
+  const [roleId, setRoleId] = useState("");
+  const [roleEmail, setRoleEmail] = useState("");*/
 
-  const email = localStorage.getItem('email');
+  const handleClick = () => {
+    onLogout();
+  };
 
-  const role = localStorage.getItem('role_id');
+ /* useEffect(() => {
+    const profileDbRef = ref(db, "profile/login/role");
+    const unsubscribe2 = onValue(profileDbRef, () => {
+      setRole(localStorage.getItem('role'));
+      setRoleId(localStorage.getItem('role_id'));
+      setRoleEmail(localStorage.getItem('role_email'));
+    });
+    return unsubscribe2;
+  }, []);
 
-  let name; 
-  switch(role) {
-  case '1':  
-    name = "courier";
-    break;
 
-  case '2':  
-  name = "admin";
-    break;
+set(ref(db, "profile/login/role"), {
+  role: role,
+});*/
 
-  case '3':  
-  name = "chief";
-    break;
-
-  default:
-    name = "";
-    break;
-  }
-
-  useEffect(() => {
-    setPhoto ("../images/" + name + "-2.jpg");
-  }, [name]);
-
-  const handleClick = () => onLogout()
- 
-  const handleChangePhoto = ()=> setPhoto("../images/default.jpg")
+const email = localStorage.getItem('email');
 
   return (
   <div className="profile">
       <header className="showlogin">Personal Account</header>
       <aside>
             <div className="left_box"> 
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              variant="dot"
-            >
-              <Avatar className="photo_profile" src={photo} sx={{ width: 256, height: 256 }}/>
-            </StyledBadge>
+            <img className="photo_profile" src="../images/profile.png" alt="logo"></img>
                 &nbsp; &nbsp;  filled 34% &nbsp;
             <progress value="34" max="100">
               <div id="progress" className="graph"></div>
@@ -86,9 +46,6 @@ export const Profile = ({ onLogout }) => {
              </progress>
              <br/>
              <br/>
-            <Button variant="contained" onClick={handleChangePhoto}>change photo</Button>
-            <br/>
-            <br/>
             <Button variant="contained" disabled>change password</Button>
             <br/>
             <br/>
@@ -111,6 +68,15 @@ export const Profile = ({ onLogout }) => {
         <Button variant="contained" disabled>edit</Button>
 
       </main>
+      <footer className="footer">
+      <br/>
+        <Stack direction="row" spacing={4}>
+          <a href="#"><i className="fab fa-telegram icon"></i></a>
+          <a href="#"><i className="fab fa-vk icon"></i></a>
+          <a href="#"><i className="fa fa-signal icon"></i></a>
+          <a href="#"><i className="fab fa-google-plus-g icon"></i></a>
+        </Stack>
+      </footer>
   </div>
 
   );

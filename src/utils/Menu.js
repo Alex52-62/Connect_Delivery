@@ -2,11 +2,13 @@ import {useState} from 'react';
 
 import {Drawer, IconButton, Box, List, ListItem, ListItemText} from '@mui/material';
 import {ArrowBack as ArrowBackIcon, Menu as MenuIcon,} from '@mui/icons-material';
+ import {Link} from "react-router-dom";
 
 
 export default function Menu({menuItem}) {
-
+    // const { path, url } = useRoutes();
     const [state, setState] = useState(false);
+
     const toggleDrawer = (foo) => (event) => {
         if (
             event.type === 'keydown' &&
@@ -20,19 +22,21 @@ export default function Menu({menuItem}) {
     return (
         <>
             <IconButton onClick={toggleDrawer()}>
-                {state ? <ArrowBackIcon fontSize={'large'}/> : <MenuIcon fontSize={'large'}/>}
+                {state ? <ArrowBackIcon/> : <MenuIcon/>}
             </IconButton>
             <Drawer open={state} onClose={toggleDrawer()}>
+                {/*Todo: redo with List and ListItem*/}
                 <Box sx={{width: 250, my: 5}}>
                     <List>
                         {menuItem.map((anchor, index) => (
-                            <ListItem
-                                button={true}
-                                sx={{mx: 2}}
-                                onClick={toggleDrawer(anchor.func)} key={index}
+
+                            <ListItem button={true} sx={{mx: 2}}
+                                      onClick={toggleDrawer(anchor.func)} key={index}
+                                       component={Link} to={`${anchor.href}`}
                             >
                                 <ListItemText primary={anchor.name}/>
                             </ListItem>
+                            // </Link>
                         ))}
                     </List>
                 </Box>

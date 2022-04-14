@@ -2,7 +2,6 @@ import * as React from "react";
 import AdminInWork from "../AdminInWork/AdminInWork";
 import AdminHistory from "../AdminHistory/AdminHistory";
 import {Divider} from "@mui/material";
-import {AdminCreateOrder} from "../AdminCreateOrder/AdminCreateOrder";
 
 export const AdminMain = () => {
 
@@ -11,7 +10,6 @@ export const AdminMain = () => {
             <AdminInWork/>
             <Divider variant='string' sx={{ mt: 3, mb: 3 }} />
             <AdminHistory/>
-            <AdminCreateOrder />
         </>
     );
 };
